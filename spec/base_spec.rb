@@ -128,10 +128,4 @@ describe Draper::Base do
     end
   end
   
-  context "in a Rails application" do
-    it "should include ApplicationHelper if one exists" do
-      decorator = DecoratorApplicationHelper.decorate(Object.new)
-      decorator.uses_hello == "Hello, World!"
-    end
-  end
 end
