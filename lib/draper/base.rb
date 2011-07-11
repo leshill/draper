@@ -42,7 +42,9 @@ module Draper
     end
 
     def build_methods
-      delegate select_methods, :to => source
+      (class << self; self; end).class_eval do
+        Module.delegate select_methods, :to => source
+      end
       #select_methods.each do |method|
         # (class << self; self; end).class_eval do
         #   define_method method do |*args, &block|
