@@ -42,8 +42,9 @@ module Draper
     end
 
     def build_methods
-      (class << self; self; end).class_eval do
-        Module.delegate select_methods, :to => source
+      samples = [:title, :description]
+      self.class.class_exec(samples) do |meths|
+        Module.delegate *meths, :to => :source
       end
       #select_methods.each do |method|
         # (class << self; self; end).class_eval do
